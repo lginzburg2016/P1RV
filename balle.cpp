@@ -112,4 +112,9 @@ void balle::deplacement(char touche){
 
     }
 
+
+void balle::majPositions(){
+	listePositions.push_back(Vector2(x,y));
+}
+
 }

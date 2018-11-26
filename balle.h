@@ -1,11 +1,17 @@
 //balle.h
 
+#include <Vector2.h>
+#include <vector>
+
 #pragma once
 
 class balle{
 private:
     int x,y; //position du centre de la balle
     //remarque : en 2D la balle apparaitra comme un disque
+
+	//liste des différentes positions prises par la balle au cours du temps
+	vector<Vector2> listePositions;
 
 public:
     //accesseurs
@@ -24,5 +30,8 @@ public:
 
     //fonctions
     void deplacement(char touche);
+
+	//mise à jour des positions de la balle
+	void majPositions();
 
 };
