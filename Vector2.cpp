@@ -7,7 +7,7 @@ Vector2::Vector2()
     y = 0;
 }
 
-Vector2::Vector2(double x,double y)
+Vector2::Vector2(int x,int y)
 {
     this->x = x;
     this->y = y;
@@ -59,53 +59,21 @@ Vector2 Vector2::operator- (const Vector2 & v) const
     return t;
 }
 
-Vector2 & Vector2::operator*= (const double a)
-{
-    x *= a;
-    y *= a;
-    return *this;
-}
-
-Vector2 Vector2::operator* (const double a)const
-{
-    Vector2 t = *this;
-    t *= a;
-    return t;
-}
-
-Vector2 operator* (const double a,const Vector2 & v)
-{
-    return Vector3(v.getX()*a,v.getY()*a);
-}
-
-Vector2 & Vector2::operator/= (const double a)
-{
-    x /= a;
-    y /= a;
-    return *this;
-}
-
-Vector2 Vector2::operator/ (const double a)const
-{
-    Vector2 t = *this;
-    t /= a;
-    return t;
-}
 
 // Setters/Getters
-void Vector2::setX(double x) {
+void Vector2::setX(int x) {
    this->x = x;
 }
 
-double Vector2::getX() const {
+int Vector2::getX() const {
    return x;
 }
 
-void Vector2::setY(double y) {
+void Vector2::setY(int y) {
    this->y = y;
 }
 
-double Vector2::getY() const{
+int Vector2::getY() const{
    return y;
 }
 

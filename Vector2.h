@@ -6,13 +6,13 @@ using namespace std;
 class Vector2
 {
 private:
-	double x;
-	double y;
+	int x;
+	int y;
 
 public:
 	
 	Vector2();
-	Vector2(double x,double y);
+	Vector2(int x,int y);
 	Vector2(const Vector2 & v);
    
 	Vector2 & operator= (const Vector2 & v);
@@ -24,20 +24,14 @@ public:
    
 	Vector2 & operator-= (const Vector2 & v);
 	Vector2 operator- (const Vector2 & v) const;
-   
-	Vector2 & operator*= (const double a);
-	Vector2 operator* (const double a)const;
-	friend Vector2 operator* (const double a,const Vector2 & v);
-   
-	Vector2 & operator/= (const double a);
-	Vector2 operator/ (const double a)const;
+    
    
 	// Setters/Getters
-	void setX(double x);
-	double getX() const;
+	void setX(int x);
+	int getX() const;
    
-	void setY(double y);
-	double getY() const;
+	void setY(int y);
+	int getY() const;
       
 	double length()const;
 	Vector2  normalized() const;
