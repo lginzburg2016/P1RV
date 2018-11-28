@@ -3,6 +3,8 @@
 #pragma once
 
 #define MSIZE 10
+#define N_MOVES 50
+#define N_POPULATION 100
 #include "balle.h"
 
 void generer_board(char tab[MSIZE][MSIZE]);
