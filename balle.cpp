@@ -30,7 +30,7 @@ balle::balle(){
 balle::balle(int _x, int _y, vector<int> _listeDirections){
     x = _x;
     y = _y;
-	listeDirections = _listeDirections;
+	  listeDirections = _listeDirections;
 }
 
 /*balle::balle(balle const &b){
@@ -113,4 +113,3 @@ void balle::deplacement(char touche){
 
     }
 }
-
