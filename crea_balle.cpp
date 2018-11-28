@@ -33,7 +33,7 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
 
   }
   int new_dep;
-  vector<int> deplacements = new vector<int>();
+  vector<int> deplacements(0);
   for(int i=0; i<N_MOVES; i++){
     new_dep = rand()%9+1;
     deplacements.push_back(new_dep);

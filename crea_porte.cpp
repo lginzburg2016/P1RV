@@ -58,6 +58,7 @@ void crea_porte(char tab[MSIZE][MSIZE]){
         cout << "Valeur de M : " << m << endl;
         int n = rand()%10;
         cout << "Valeur de N : " << m << endl;
+      }
     }
   }
 }
