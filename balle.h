@@ -37,6 +37,7 @@ public:
 
     //fonctions
     void deplacement(int touche);
+    void updateScore();
 
 
 };

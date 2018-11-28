@@ -125,3 +125,12 @@ void balle::deplacement(int touche){
 
     }
 }
+
+void balle::updateScore(){
+  int new_score = balle.getScore();
+  int x = balle.getX();
+  int y = balle.getY();
+
+  new_score -= 100;
+
+}
