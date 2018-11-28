@@ -15,9 +15,9 @@ void crea_porte(char tab[MSIZE][MSIZE]){
   int n = rand()%10;
   cout << "Valeur de N : " << n << endl;
   while(tab[m][n] != 'O'){
-    int m = rand()%8 + 1;
+    m = rand()%8 + 1;
     cout << "Valeur de M : " << m << endl;
-    int n = rand()%10;
+    n = rand()%10;
     cout << "Valeur de N : " << m << endl;
 
   }
@@ -49,14 +49,14 @@ void crea_porte(char tab[MSIZE][MSIZE]){
     }
     else{
       //Sinon, on change les valeurs de m et n pour modifier la position de la porte.
-      int m = rand()%8 + 1;
+      m = rand()%8 + 1;
       cout << "Valeur de M : " << m << endl;
-      int n = rand()%10;
+      n = rand()%10;
       cout << "Valeur de N : " << n << endl;
       while(tab[m][n] != 'O'){
-        int m = rand()%8 + 1;
+        m = rand()%8 + 1;
         cout << "Valeur de M : " << m << endl;
-        int n = rand()%10;
+        n = rand()%10;
         cout << "Valeur de N : " << m << endl;
       }
     }

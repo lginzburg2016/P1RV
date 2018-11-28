@@ -16,21 +16,15 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
 
   bool creation = false;
   while(!creation){
-    int m = rand()%10;
+    m = rand()%10;
     cout << "Valeur de M : " << m << endl;
-    int n = rand()%10;
+    n = rand()%10;
     cout << "Valeur de N : " << n << endl;
 
     if(tab[m][n] == 'O'){
       tab[m][n] = 'L';
       creation = true;
     }
-
-    m = rand()%10;
-    cout << "Valeur de M : " << m << endl;
-    n = rand()%10;
-    cout << "Valeur de N : " << n << endl;
-
   }
   int new_dep;
   vector<int> deplacements(0);
@@ -38,6 +32,8 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
     new_dep = rand()%9+1;
     deplacements.push_back(new_dep);
   }
+
+
 
   balle new_balle = balle(m,n,deplacements);
   //new_balle.setX(m);
