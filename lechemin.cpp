@@ -58,9 +58,7 @@ int main(){
                 tab[x_old][y_old] = 'O';
                 break;
         }
-        
-		//mise à jour de la liste des positions de la balle
-		courante.majPositions();
+      
 
         affichage(tab);
         break;
@@ -68,6 +66,6 @@ int main(){
   }
 
   affichage(tab);
-  
+
   return 0;
 }
