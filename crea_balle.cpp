@@ -8,7 +8,7 @@ using namespace std;
 
 balle crea_balle(char tab[MSIZE][MSIZE]){
 
-
+  int score = 0;
   int m = rand()%10;
   cout << "Valeur de M : " << m << endl;
   int n = rand()%10;
@@ -35,7 +35,7 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
 
 
 
-  balle new_balle = balle(m,n,deplacements);
+  balle new_balle = balle(m,n,deplacements,score);
   //new_balle.setX(m);
   //new_balle.setY(n);
   return (new_balle);

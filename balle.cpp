@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-//accesseurs
+//getters
 int balle::getX() const{
     return x;
 }
@@ -13,6 +13,15 @@ int balle::getY() const{
     return y;
 }
 
+vector<int> balle::getListeDirections() const{
+    return listeDirections;
+}
+
+int balle::getScore() const{
+    return score;
+}
+
+//setters
 void balle::setX(int _x){
     x = _x;
 }
@@ -21,16 +30,27 @@ void balle::setY(int _y){
     y = _y;
 }
 
+void balle::setListeDirections(vector<int> _listeDirections){
+    listeDirections = _listeDirections;
+}
+
+void balle::setScore(int _score){
+  score = _score;
+}
+
 //constructeurs
 balle::balle(){
     x = 0;
     y = 0;
+    listeDirections = vector<int>(0);
+    score = 0;
 }
 
-balle::balle(int _x, int _y, vector<int> _listeDirections){
+balle::balle(int _x, int _y, vector<int> _listeDirections, int _score){
     x = _x;
     y = _y;
 	  listeDirections = _listeDirections;
+    score = _score;
 }
 
 /*balle::balle(balle const &b){
