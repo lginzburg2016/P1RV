@@ -5,12 +5,15 @@ using namespace std;
 
 #include <vector>
 
-vector<balle*> * initialiserPop(int n){
+
+vector<balle*> * initialiserPop(char tab[MSIZE][MSIZE]){
+
     vector<balle*> *population = new vector<balle*>();
-    for (int i=0; i<n; i++) {
-        int x = rand()%n;
-        int y = rand()%n;
-        population->push_back(new balle(x,y));
+
+
+    for (int i=0; i<N_POPULATION; i++) {
+		balle nouvelleBalle = crea_balle(tab);
+        population->push_back(*nouvelleBalle);
     }
-    return population;
+
 }
