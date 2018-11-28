@@ -17,7 +17,6 @@ int main(){
   bool fin_jeu = false;
   while(!fin_jeu){
     char touche;
-    cout << courante.getX() << "," << courante.getY() << endl;
     cout << "Deplacement ?" << endl;
     cin >> touche;
     switch (touche){
