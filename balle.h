@@ -1,17 +1,18 @@
 //balle.h
 
-#include "Vector2.h"
 #include <vector>
 
 #pragma once
+
+using namespace std;
 
 class balle{
 private:
     int x,y; //position du centre de la balle
     //remarque : en 2D la balle apparaitra comme un disque
 
-	//liste des différentes positions prises par la balle au cours du temps
-	vector<int> listeDirections; //création de cette liste à la création d'une balle -> son chemin est prédéterminé donc !
+	//liste des diffï¿½rentes positions prises par la balle au cours du temps
+	vector<int> listeDirections; //crï¿½ation de cette liste ï¿½ la crï¿½ation d'une balle -> son chemin est prï¿½dï¿½terminï¿½ donc !
 
 public:
     //accesseurs
