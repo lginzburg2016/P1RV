@@ -29,7 +29,7 @@ public:
     ~balle();
 
     //fonctions
-    void deplacement(char touche);
+    void deplacement(int touche);
 
 
 };

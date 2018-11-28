@@ -16,29 +16,21 @@ int main(){
   affichage(tab);
   bool fin_jeu = false;
   while(!fin_jeu){
-    char touche;
+    int touche;
     cout << "Deplacement ?" << endl;
     cin >> touche;
     switch (touche){
       case 27:
         fin_jeu = true;
         break;
-      case 'A':
-      case 'a':
-      case 'Z':
-      case 'z':
-      case 'E':
-      case 'e':
-      case 'Q':
-      case 'q':
-      case 'S':
-      case 's':
-      case 'D':
-      case 'd':
-      case 'W':
-      case 'w':
-      case 'X':
-      case 'x':
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
         int x_old = courante.getX();
         int y_old = courante.getY();
         courante.deplacement(touche);

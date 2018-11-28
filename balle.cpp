@@ -42,13 +42,13 @@ balle::balle(int _x, int _y, vector<int> _listeDirections){
 balle::~balle(){}
 
 //deplacement
-void balle::deplacement(char touche){
+void balle::deplacement(int touche){
     /*
     Dans un premier temps, les deplacements seront geres par l'utilisateur.
     Il utilisera le clavier pour diriger la balle :
-    W = diagonale bas gauche, X = diagonale bas droite,
-    A = diagonale haut gauche, E = diagonale haut droite,
-    S = bas, Z = haut, Q = gauche, D = droite.
+    1 = diagonale bas gauche, 3 = diagonale bas droite,
+    7 = diagonale haut gauche, 9 = diagonale haut droite,
+    2 = bas, 8 = haut, 4 = gauche, 6 = droite.
 
     Il faudra prendre en compte la presence de portes et le rayon de la balle --> a ecrire dans le main.
     */
@@ -56,55 +56,47 @@ void balle::deplacement(char touche){
 
     switch(touche){
 
-    case 'A':
-    case 'a':
+    case 7:
         {
             x = (x-1)%MSIZE;
             y = (y-1)%MSIZE;
             break;
         }
-    case 'E':
-    case 'e':
+    case 9:
         {
             x = (x-1)%MSIZE;
             y = (y+1)%MSIZE;
             break;
         }
-    case 'W':
-    case 'w':
+    case 1:
         {
             x = (x+1)%MSIZE;
             y = (y-1)%MSIZE;
             break;
         }
-    case 'X':
-    case 'x':
+    case 3:
         {
             x = (x+1)%MSIZE;
             y = (y+1)%MSIZE;
             break;
         }
-    case 'Z':
-    case 'z':
+    case 8:
         {
             x = (x-1)%MSIZE;
             break;
         }
-    case 'S':
-    case 's':
+    case 2:
         {
             x = (x+1)%MSIZE;
             break;
         }
-    case 'Q':
-    case 'q':
+    case 4:
         {
             y = (y-1)%MSIZE;
             break;
         }
-    case 'D':
-    case 'd':
-        {
+    case 6:
+         {
             y = (y+1)%MSIZE;
             break;
         }
