@@ -11,7 +11,7 @@ private:
     //remarque : en 2D la balle apparaitra comme un disque
 
 	//liste des différentes positions prises par la balle au cours du temps
-	vector<Vector2> listePositions;
+	vector<int> listeDirections; //création de cette liste à la création d'une balle -> son chemin est prédéterminé donc !
 
 public:
     //accesseurs
@@ -22,7 +22,7 @@ public:
 
     //constructeurs
     balle(); //constructeur par defaut
-    balle(int _x, int _y); //constructeur complet
+    balle(int _x, int _y, vector<int> _listeDirections); //constructeur complet
     //balle(balle const &b); //constructeur par recopie
 
     //destructeur
@@ -31,7 +31,5 @@ public:
     //fonctions
     void deplacement(char touche);
 
-	//mise à jour des positions de la balle
-	void majPositions();
 
 };

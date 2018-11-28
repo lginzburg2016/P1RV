@@ -27,9 +27,10 @@ balle::balle(){
     y = 0;
 }
 
-balle::balle(int _x, int _y){
+balle::balle(int _x, int _y, vector<int> _listeDirections){
     x = _x;
     y = _y;
+	listeDirections = _listeDirections;
 }
 
 /*balle::balle(balle const &b){
@@ -111,10 +112,5 @@ void balle::deplacement(char touche){
         cout << "Mauvaise touche !" << endl;
 
     }
-
-
-void balle::majPositions(){
-	listePositions.push_back(Vector2(x,y));
 }
 
-}
