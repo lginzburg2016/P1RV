@@ -32,8 +32,14 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
     cout << "Valeur de N : " << n << endl;
 
   }
+  int new_dep;
+  deplacements = new vector<int>();
+  for(int i=0; i<N_MOVES; i++){
+    new_dep = rand()%9+1;
+    deplacements.push_back(new_dep);
+  }
 
-  balle new_balle = balle(m,n);
+  balle new_balle = balle(m,n,deplacements);
   //new_balle.setX(m);
   //new_balle.setY(n);
   return (new_balle);
