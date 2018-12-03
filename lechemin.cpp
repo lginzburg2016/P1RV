@@ -16,10 +16,11 @@ int main(){
   affichage(tab);
   bool fin_jeu = false;
   int tour = 0;
+  int x_old, y_old, x, y, touche;
+  char value;
   while(!fin_jeu){
-    int touche;
-    int x_old = courante.getX();
-    int y_old = courante.getY();
+    x_old = courante.getX();
+    y_old = courante.getY();
     cout << "Deplacement ?" << endl;
     cin >> touche;
     switch (touche){
@@ -36,9 +37,9 @@ int main(){
       case 9:
         courante.deplacement(touche);
         //MODIFIER LA MATRICE AVEC LETTRES
-        int x = courante.getX();
-        int y = courante.getY();
-        char value = tab[x][y];
+        x = courante.getX();
+        y = courante.getY();
+        value = tab[x][y];
         switch (value){
             case 'L':
             case 'X':
