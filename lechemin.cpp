@@ -18,6 +18,7 @@ int main(){
   int tour = 0;
   int x_old, y_old, x, y, touche;
   char value;
+  courante.setScore(100);
   while(!fin_jeu){
     x_old = courante.getX();
     y_old = courante.getY();
@@ -68,6 +69,7 @@ int main(){
         courante.updateScore(-1);
       }
     }
+    cout << "Score : " << courante.getScore() << endl;
     tour += 1 ;
   }
 
