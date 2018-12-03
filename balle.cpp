@@ -21,6 +21,10 @@ int balle::getScore() const{
     return score;
 }
 
+int balle::getPassage() const{
+  return passage;
+}
+
 //setters
 void balle::setX(int _x){
     x = _x;
@@ -38,19 +42,25 @@ void balle::setScore(int _score){
   score = _score;
 }
 
+void balle::setPassage(int _passage){
+  passage = _passage;
+}
+
 //constructeurs
 balle::balle(){
     x = 0;
     y = 0;
     listeDirections = vector<int>(0);
     score = 0;
+    passage = 0;
 }
 
-balle::balle(int _x, int _y, vector<int> _listeDirections, int _score){
+balle::balle(int _x, int _y, vector<int> _listeDirections, int _score, int _passage){
     x = _x;
     y = _y;
-	listeDirections = _listeDirections;
+	  listeDirections = _listeDirections;
     score = _score;
+    passage = _passage;
 }
 
 /*balle::balle(balle const &b){

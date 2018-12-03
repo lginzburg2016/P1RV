@@ -13,7 +13,8 @@ private:
 
 	//liste des diff�rentes positions prises par la balle au cours du temps
 	vector<int> listeDirections; //cr�ation de cette liste � la cr�ation d'une balle -> son chemin est pr�d�termin� donc !
-    int score;
+  int score;
+  int passage;
 
 public:
     //accesseurs
@@ -21,11 +22,13 @@ public:
     int getY() const;
     vector<int> getListeDirections() const;
     int getScore() const;
+    int getPassage() const;
 
     void setX(int _x);
     void setY(int _y);
     void setListeDirections(vector<int> _listeDirections);
     void setScore(int _score);
+    void setPassage(int _passage);
 
 
     //constructeurs

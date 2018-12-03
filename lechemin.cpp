@@ -16,7 +16,7 @@ int main(){
   affichage(tab);
   bool fin_jeu = false;
   int tour = 0;
-  int x_old, y_old, x, y, touche;
+  int x_old, y_old, x, y, touche, passage_cour, ordre_porte;
   char value;
   courante.setScore(100);
   while(!fin_jeu){
@@ -50,6 +50,19 @@ int main(){
                 tab[x][y] = 'L';
                 tab[x_old][y_old] = 'O';
                 break;
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+              //Implementer blocage si ordre passage mauvais
+              break;
+
+
         }
         affichage(tab);
         break;
@@ -76,4 +89,6 @@ int main(){
   affichage(tab);
 
   return 0;
+
+  // IDEE : CREATION PORTE AVEC UN CHIFFRE AU CENTRE, AJOUT ATTRIBUT A LA BALLE AVEC L'INDICE DE LA DERNIERE PORTE PASSEE
 }
