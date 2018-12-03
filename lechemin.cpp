@@ -15,8 +15,11 @@ int main(){
   balle courante = crea_balle(tab);
   affichage(tab);
   bool fin_jeu = false;
+  int tour = 0;
   while(!fin_jeu){
     int touche;
+    int x_old = courante.getX();
+    int y_old = courante.getY();
     cout << "Deplacement ?" << endl;
     cin >> touche;
     switch (touche){
@@ -31,8 +34,6 @@ int main(){
       case 7:
       case 8:
       case 9:
-        int x_old = courante.getX();
-        int y_old = courante.getY();
         courante.deplacement(touche);
         //MODIFIER LA MATRICE AVEC LETTRES
         int x = courante.getX();
@@ -50,11 +51,24 @@ int main(){
                 tab[x_old][y_old] = 'O';
                 break;
         }
-
-
         affichage(tab);
         break;
+      default:
+        cout << "Mauvais déplacement" << endl;
+        break;
     }
+
+    //On met à jour le score à chaque tour de boucle du while.
+    vector<int> depl = courante.getListeDirections();
+    if(tour >= 1){
+      if((depl[tour] == 3 || depl[tour] == 6 || depl[tour] == 9) && (depl[tour-1] == 3 || depl[tour-1] == 6 || depl[tour-1] == 9) && (tab[x_old-1][y_old] == 'X') && (tab[x_old+1][y_old] == 'X')){
+        balle.updateScore(10);
+      }
+      else{
+        balle.updateScore(-1);
+      }
+    }
+    tour += 1 ;
   }
 
   affichage(tab);
