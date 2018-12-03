@@ -79,13 +79,13 @@ void balle::deplacement(int touche){
     case 7:
         {
           if (x-1 < 0){
-            x = MSIZE;
+            x = MSIZE-1;
           }
           else{
             x = x-1;
           }
           if (y-1 < 0){
-            y = MSIZE;
+            y = MSIZE-1;
           }
           else{
             y = y-1;
@@ -95,7 +95,7 @@ void balle::deplacement(int touche){
     case 9:
         {
           if (x-1 < 0){
-            x = MSIZE;
+            x = MSIZE-1;
           }
           else{
             x = x-1;
@@ -107,7 +107,7 @@ void balle::deplacement(int touche){
         {
           x = (x+1)%MSIZE;
           if (y-1 < 0){
-            y = MSIZE;
+            y = MSIZE-1;
           }
           else{
             y = y-1;
@@ -123,7 +123,7 @@ void balle::deplacement(int touche){
     case 8:
         {
           if (x-1 < 0){
-            x = MSIZE;
+            x = MSIZE-1;
           }
           else{
             x = x-1;
@@ -138,7 +138,7 @@ void balle::deplacement(int touche){
     case 4:
         {
           if (y-1 < 0){
-            y = MSIZE;
+            y = MSIZE-1;
           }
           else{
             y = y-1;
@@ -147,7 +147,7 @@ void balle::deplacement(int touche){
         }
     case 6:
          {
-          y = (y+1)%MSIZE;
+          y = (y+1)%MSIZE-1;
           break;
         }
     default :
