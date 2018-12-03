@@ -49,7 +49,7 @@ balle::balle(){
 balle::balle(int _x, int _y, vector<int> _listeDirections, int _score){
     x = _x;
     y = _y;
-	  listeDirections = _listeDirections;
+	listeDirections = _listeDirections;
     score = _score;
 }
 
@@ -121,16 +121,14 @@ void balle::deplacement(int touche){
             break;
         }
     default :
+		//on ne bouge pas
+		x = x;
+		y = y;
         cout << "Mauvaise touche !" << endl;
 
     }
 }
 
-void balle::updateScore(){
-  int new_score = balle.getScore();
-  int x = balle.getX();
-  int y = balle.getY();
-
-  new_score -= 100;
-
+void balle::updateScore(int deltaS){
+	score += deltaS; //deltaS peut etre positif ou negatif
 }
