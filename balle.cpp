@@ -143,6 +143,7 @@ void balle::deplacement(int touche){
           else{
             y = y-1;
           }
+          break;
         }
     case 6:
          {
