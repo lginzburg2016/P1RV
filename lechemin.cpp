@@ -36,12 +36,10 @@ int main(){
       case 8:
       case 9:
         courante.deplacement(touche);
-        //MODIFIER LA MATRICE AVEC LETTRES
         x = courante.getX();
         y = courante.getY();
         value = tab[x][y];
         switch (value){
-            case 'L':
             case 'X':
                 courante.setX(x_old);
                 courante.setY(y_old);
