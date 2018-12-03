@@ -13,7 +13,8 @@ private:
 
 	//liste des diff�rentes positions prises par la balle au cours du temps
 	vector<int> listeDirections; //cr�ation de cette liste � la cr�ation d'une balle -> son chemin est pr�d�termin� donc !
-  int score;
+    int score;
+
 public:
     //accesseurs
     int getX() const;
@@ -37,7 +38,7 @@ public:
 
     //fonctions
     void deplacement(int touche);
-    void updateScore();
+    void updateScore(int deltaS);
 
 
 };
