@@ -147,7 +147,7 @@ void balle::deplacement(int touche){
         }
     case 6:
          {
-          y = (y+1)%MSIZE-1;
+          y = (y+1)%MSIZE;
           break;
         }
     default :
