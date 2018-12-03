@@ -75,50 +75,79 @@ void balle::deplacement(int touche){
 
 
     switch(touche){
-
+    // On gère à chaque fois le cas où x ou y peut être négatif en le réinitialisant de l'autre côté du tableau.
     case 7:
         {
-            x = (x-1)%MSIZE;
-            y = (y-1)%MSIZE;
-            break;
+          if (x-1 < 0){
+            x = MSIZE;
+          }
+          else{
+            x = x-1;
+          }
+          if (y-1 < 0){
+            y = MSIZE;
+          }
+          else{
+            y = y-1;
+          }
+          break;
         }
     case 9:
         {
-            x = (x-1)%MSIZE;
-            y = (y+1)%MSIZE;
-            break;
+          if (x-1 < 0){
+            x = MSIZE;
+          }
+          else{
+            x = x-1;
+          }
+          y = (y+1)%MSIZE;
+          break;
         }
     case 1:
         {
-            x = (x+1)%MSIZE;
-            y = (y-1)%MSIZE;
-            break;
+          x = (x+1)%MSIZE;
+          if (y-1 < 0){
+            y = MSIZE;
+          }
+          else{
+            y = y-1;
+          }
+          break;
         }
     case 3:
         {
-            x = (x+1)%MSIZE;
-            y = (y+1)%MSIZE;
-            break;
+          x = (x+1)%MSIZE;
+          y = (y+1)%MSIZE;
+          break;
         }
     case 8:
         {
-            x = (x-1)%MSIZE;
-            break;
+          if (x-1 < 0){
+            x = MSIZE;
+          }
+          else{
+            x = x-1;
+          }
+          break;
         }
     case 2:
         {
-            x = (x+1)%MSIZE;
-            break;
+          x = (x+1)%MSIZE;
+          break;
         }
     case 4:
         {
-            y = (y-1)%MSIZE;
-            break;
+          if (y-1 < 0){
+            y = MSIZE;
+          }
+          else{
+            y = y-1;
+          }
         }
     case 6:
          {
-            y = (y+1)%MSIZE;
-            break;
+          y = (y+1)%MSIZE;
+          break;
         }
     default :
 		//on ne bouge pas

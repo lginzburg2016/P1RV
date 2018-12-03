@@ -61,6 +61,7 @@ int main(){
     //On met à jour le score à chaque tour de boucle du while.
     vector<int> depl = courante.getListeDirections();
     if(tour >= 1){
+      //Si on effectue deux déplacements à droite consécutifs et qu'avant le déplacement la balle est entre deux montants de porte, on incrémente positivement le score.
       if((depl[tour] == 3 || depl[tour] == 6 || depl[tour] == 9) && (depl[tour-1] == 3 || depl[tour-1] == 6 || depl[tour-1] == 9) && (tab[x_old-1][y_old] == 'X') && (tab[x_old+1][y_old] == 'X')){
         balle.updateScore(10);
       }
