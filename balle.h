@@ -33,8 +33,8 @@ public:
 
     //constructeurs
     balle(); //constructeur par defaut
-    balle(int _x, int _y, vector<int> _listeDirections, int _score); //constructeur complet
-    //balle(balle const &b); //constructeur par recopie
+    balle(int _x, int _y, vector<int> _listeDirections, int _score, int _passage); //constructeur complet
+    //balle(balle const &b); //constructeur par recopie, a priori pas utile
 
     //destructeur
     ~balle();

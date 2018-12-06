@@ -58,7 +58,7 @@ balle::balle(){
 balle::balle(int _x, int _y, vector<int> _listeDirections, int _score, int _passage){
     x = _x;
     y = _y;
-	  listeDirections = _listeDirections;
+	listeDirections = _listeDirections;
     score = _score;
     passage = _passage;
 }

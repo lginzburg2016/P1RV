@@ -15,6 +15,8 @@ void generer_board(char tab[MSIZE][MSIZE]){
     }
   }
 
-  crea_porte(tab);
-  crea_porte(tab);
+  for (int i = 1; i <= N_PORTES; i++){
+	  crea_porte(tab,i);
+  }
+
 }

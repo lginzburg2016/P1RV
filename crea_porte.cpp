@@ -6,23 +6,23 @@
 
 using namespace std;
 
-void crea_porte(char tab[MSIZE][MSIZE]){
+void crea_porte(char tab[MSIZE][MSIZE], int numero){
 
   //on choisit une case aléatoire qui n'est ni dans la première ni dans la dernière colonne. Et qui est vide.
 
-  int m = rand()%8 + 1;
+  int m = rand()%(MSIZE -1) + 1;
   cout << "Valeur de M : " << m << endl;
-  int n = rand()%10;
+  int n = rand()%(MSIZE -1);
   cout << "Valeur de N : " << n << endl;
   while(tab[m][n] != 'O'){
-    m = rand()%8 + 1;
+    m = rand()%(MSIZE -1) + 1;
     cout << "Valeur de M : " << m << endl;
-    n = rand()%10;
+    n = rand()%(MSIZE -1);
     cout << "Valeur de N : " << m << endl;
   }
 
   bool crea_porte = false;
-  //on choisit deux cases pour créer la porte, en vérifiant qu'elles rentrent toutesl es deux dans la matrice.
+  //on choisit deux cases pour créer la porte, en vérifiant qu'elles rentrent toutes les deux dans la matrice.
   int m1, n1, direction;
   while(crea_porte == false){
     //On choisit la direction (haut ou bas) dans laquelle on place la porte.
@@ -43,6 +43,8 @@ void crea_porte(char tab[MSIZE][MSIZE]){
       //Si on peut placer la porte, c'est bon.
       tab[m][n] = 'X';
       tab[m1][n1] = 'X';
+	  cout << "numero de porte : " <<  (char)numero << endl;
+	  tab[(m+m1)/2][n] = (char)numero; //indique l ordre de passage de la porte, l inscrit au milieu des montants de la porte
       crea_porte = true;
       cout << "Porte créée." << endl;
     }

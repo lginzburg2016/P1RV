@@ -9,6 +9,7 @@ using namespace std;
 balle crea_balle(char tab[MSIZE][MSIZE]){
 
   int score = 0;
+  int passage = 0;
 
   /*
   //creation aleatoire des balles 
@@ -46,7 +47,7 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
 
 
 
-  balle new_balle = balle(m,n,deplacements,score);
+  balle new_balle = balle(m,n,deplacements,score,passage);
   //new_balle.setX(m);
   //new_balle.setY(n);
   return (new_balle);
