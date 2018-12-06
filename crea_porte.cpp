@@ -10,14 +10,14 @@ void crea_porte(char tab[MSIZE][MSIZE], int numero){
 
   //on choisit une case aléatoire qui n'est ni dans la première ni dans la dernière colonne. Et qui est vide.
 
-  int m = rand()%(MSIZE -1) + 1;
+  int m = rand()%(MSIZE -2) + 1;
   cout << "Valeur de M : " << m << endl;
-  int n = rand()%(MSIZE -1);
+  int n = rand()%(MSIZE -2);
   cout << "Valeur de N : " << n << endl;
   while(tab[m][n] != 'O'){
-    m = rand()%(MSIZE -1) + 1;
+    m = rand()%(MSIZE -2) + 1;
     cout << "Valeur de M : " << m << endl;
-    n = rand()%(MSIZE -1);
+    n = rand()%(MSIZE -2);
     cout << "Valeur de N : " << m << endl;
   }
 
@@ -39,12 +39,17 @@ void crea_porte(char tab[MSIZE][MSIZE], int numero){
     }
     cout << "Valeur de M1 : " << m1 << endl;
     cout << "Valeur de N1 : " << n1 << endl;
-    if ((m1 > 0) && (m1 < MSIZE) && (n1 > 0) && (n1 < MSIZE) && ( (tab[m-1][n] == 'X') || (tab[m+1][n] == 'X') ) && ( (tab[m][n-1] == 'X') || (tab[m][n+1] == 'X') ) ){ //on ne veut pas des portes collees ou imbriquees !
+
+    if ((m1 > 0) && (m1 < MSIZE) && (n1 > 0) && (n1 < MSIZE) && ( (tab[min(m-1,m1-1)][n] == 'O') && (tab[max(m+1,m1+1)][n] == 'O') ) && ( (tab[m][n-1] == 'O') && (tab[m][n+1] == 'O') ) && ( (tab[m1][n-1] == 'O') && (tab[m1][n+1] == 'O') ) ){ //on ne veut pas des portes collees ou imbriquees !
+      //SI LES MONTANTS DE LA PORTE SONT DANS LA MATRICE     ET S'IL N'Y A PAS DE MONTANT EN HAUT/BAS DE CELLE QUE L'ON VEUT PLACER ET S'IL N'Y A PAS DE MONTANT A GAUCHE ET A DROITE DE LA PORTE.
       //Si on peut placer la porte, c'est bon.
       tab[m][n] = 'X';
       tab[m1][n1] = 'X';
-	  cout << "numero de porte : " <<  (char)numero << endl;
-	  tab[(m+m1)/2][n] = (char)numero; //indique l ordre de passage de la porte, l inscrit au milieu des montants de la porte
+      char num_string = numero+'0';
+      cout << num_string << endl;
+      cout << numero << endl;
+	    cout << "numero de porte : " <<  numero << endl;
+	    tab[(m+m1)/2][n] = num_string; //indique l ordre de passage de la porte, l inscrit au milieu des montants de la porte
       crea_porte = true;
       cout << "Porte créée." << endl;
     }

@@ -162,9 +162,8 @@ void balle::deplacement(int touche){
         }
     default :
 		//on ne bouge pas
-		x = x;
-		y = y;
-        cout << "Mauvaise touche !" << endl;
+      cout << "Mauvaise touche !" << endl;
+      break;
 
     }
 }
