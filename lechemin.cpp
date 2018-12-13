@@ -82,10 +82,19 @@ int main(){
 					          cout << "Ce n'est pas la bonne porte, il faut passer par la porte n° : " << courante.getPassage() + 1 << " d'abord" << endl;
                     incrementation = false;
 				          }else{
+                    //Si on ressort de la porte vers la gauche, on n'incrémente pas et on laisse la case sur le chiffre
 					          tab[x][y] = 'L';
-					          tab[x_old][y_old] = 'O';
-					          courante.setPassage(courante.getPassage() + 1);
-                    incrementation = true;
+                    if (touche == 1 || touche == 4 || touche == 7){
+                      tab[x_old][y_old] = value;
+                      incrementation = false;
+                    }
+                    //Si on traverse, on passe la porte à O, et on incrémente le score + l'ordre de passage
+                    else{
+					            tab[x_old][y_old] = 'O';
+                      courante.setPassage(courante.getPassage() + 1);
+                      incrementation = true;
+                    }
+
 
 					//remarque : apres un passage, il n y aura plus de numero au centre de la porte
 				          }
@@ -119,7 +128,7 @@ int main(){
     }
     cout << "Score : " << courante.getScore() << endl;
     tour += 1 ;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
 
   affichage(tab);
