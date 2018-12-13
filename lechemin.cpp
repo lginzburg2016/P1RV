@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <chrono>
+#include <thread>
 
 
 using namespace std;
@@ -28,7 +30,7 @@ int main(){
     }
     x_old = courante.getX();
     y_old = courante.getY();
-    cout << "Continuer ? (y/n)" << endl;
+    /*cout << "Continuer ? (y/n)" << endl;
     cin >> cont;
     switch(cont){
       case 'n':
@@ -36,9 +38,10 @@ int main(){
         break;
       case 'y':
         break;
-    }
+    }*/
     vector<int> depl = courante.getListeDirections();
     touche = depl[tour];
+    cout << touche << endl;
     switch (touche){
       case 1:
       case 2:
@@ -71,11 +74,11 @@ int main(){
             case '7':
             case '8':
             case '9':
-              //Implementer blocage si ordre passage mauvais
+              //Blocage si ordre passage mauvais
 				          if ( ((int)value - 48) > (courante.getPassage() + 1) ){ //attention, en code ASCII, nombres commencent à 48 !
 					          courante.setX(x_old);
 					          courante.setY(y_old);
-					          cout << "ce n'est pas la bonne porte, il faut passer par la porte n° : " << courante.getPassage() + 1 << " d'abord" << endl;
+					          cout << "Ce n'est pas la bonne porte, il faut passer par la porte n° : " << courante.getPassage() + 1 << " d'abord" << endl;
                     incrementation = false;
 				          }else{
 					          tab[x][y] = 'L';
@@ -101,7 +104,8 @@ int main(){
 		//remarque : s il n y a plus de numero au centre de la porte, c est qu elle aura deja ete franchie et on ne compte pas de points a nouveau !
         cout << "On a passé une porte, incrementation vaut " << incrementation << endl;
 		    if (incrementation){ //si ce n etait pas 'O' au centre de la porte, c etait un numero et donc on incremente le score
-			     courante.updateScore(10);
+           cout << "Porte franchie !!!!!!!!!!" << endl;
+           courante.updateScore(10);
            incrementation = false;
 		       }
       }
@@ -114,6 +118,7 @@ int main(){
     }
     cout << "Score : " << courante.getScore() << endl;
     tour += 1 ;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   }
 
   affichage(tab);
