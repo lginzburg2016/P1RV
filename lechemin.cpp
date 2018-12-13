@@ -94,9 +94,7 @@ int main(){
                       courante.setPassage(courante.getPassage() + 1);
                       incrementation = true;
                     }
-
-
-					//remarque : apres un passage, il n y aura plus de numero au centre de la porte
+					//Apres un passage, il n y aura plus de numero au centre de la porte
 				          }
               break;
         }
