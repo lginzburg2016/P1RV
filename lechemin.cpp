@@ -40,6 +40,7 @@ int main(){
         break;
     }*/
     vector<int> depl = courante.getListeDirections();
+    //A chaque tour de boucle, on lit la valeur de déplacement suivante.
     touche = depl[tour];
     cout << touche << endl;
     switch (touche){
@@ -75,7 +76,7 @@ int main(){
             case '8':
             case '9':
               //Blocage si ordre passage mauvais
-				          if ( ((int)value - 48) > (courante.getPassage() + 1) ){ //attention, en code ASCII, nombres commencent à 48 !
+				          if ( ((int)value - 48) > (courante.getPassage() + 1) || touche == 1 || touche == 4 || touche == 7){ //attention, en code ASCII, nombres commencent à 48 !
 					          courante.setX(x_old);
 					          courante.setY(y_old);
 					          cout << "Ce n'est pas la bonne porte, il faut passer par la porte n° : " << courante.getPassage() + 1 << " d'abord" << endl;
