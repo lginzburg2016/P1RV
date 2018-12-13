@@ -4,7 +4,7 @@
 
 #define MSIZE 10
 #define N_MOVES 10000
-#define N_POPULATION 100
+#define N_POPULATION 2500
 #define N_PORTES 3
 #include "balle.h"
 
