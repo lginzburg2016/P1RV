@@ -21,7 +21,7 @@ int main(){
 	char tab_ini[MSIZE][MSIZE];
 	vector<balle> population;
 	vector<balle> new_population;
-	balle meilleureBalle = crea_balle(tab); //stockera la meilleure balle d une population
+	balle meilleureBalle; //stockera la meilleure balle d une population
 	int maxEval = 0; //stockera la meilleure evaluation trouvee dans une population de balles (c est a dire le nombre de tours passes avant la fin du jeu)
 	bool fin_jeu = false;
 	int tour = 0;
@@ -35,6 +35,7 @@ int main(){
 
 	cout << "Quel pourcentage de mutation souhaitez-vous appliquer aux populations ? Entre 0 et 100" << endl;
 	cin >> degre_mutation;
+
 	//generation de la matrice contenant les portes a passer
 	generer_board(tab);
 
@@ -65,6 +66,7 @@ int main(){
 
 			fin_jeu = false;
 			courante = population[j];
+      //PARCOURS D'UNE BALLE
 			while(!fin_jeu){
 				if (tour == N_MOVES){
 					fin_jeu = true;
@@ -154,19 +156,18 @@ int main(){
 						}
 						break;
 					}
-					affichage(tab);
+
 					break;
 				default:
 					cout << "Mauvais deplacement" << endl;
 					break;
 				}
-
+        affichage(tab);
 				//On met a jour le score a chaque tour de boucle du while.
 				if(tour >= 1){
 					//Si on effectue deux deplacements a droite consecutifs et qu avant le deplacement la balle est entre deux montants de porte, on incremente positivement le score.
 					if((depl[tour] == 3 || depl[tour] == 6 || depl[tour] == 9) && (depl[tour-1] == 3 || depl[tour-1] == 6 || depl[tour-1] == 9) && (tab[x_old-1][y_old] == 'X') && (tab[x_old+1][y_old] == 'X')){
 						//remarque : s il n y a plus de numero au centre de la porte, c est qu elle aura deja ete franchie et on ne compte pas de points a nouveau !
-						cout << "On a passe une porte, incrementation vaut " << incrementation << endl;
 						if (incrementation){ //si ce n etait pas 'O' au centre de la porte, c etait un numero et donc on incremente le score
 							cout << "Porte franchie !!!!!!!!!!" << endl;
 							courante.updateScore(10);
@@ -175,13 +176,14 @@ int main(){
 					}
 					else{
 						courante.updateScore(-1); //quand on passe un pas de temps on diminue le score
-						if (courante.getScore() == 0){
+						if (courante.getScore() <= 0){
 							fin_jeu = true;
 						}
 					}
 				}
 				cout << "Score : " << courante.getScore() << endl;
 				tour += 1 ;
+        //ON CREE UN DELAI DE 100 MILLISECONDES ENTRE CHAQUE PAS DE TEMPS
 				//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			}
 
@@ -206,7 +208,7 @@ int main(){
 		//ON GARDE LA MEILLEURE BALLE DE LA POPULATION, ET ON FAIT MUTER LES AUTRES
 
 		new_population.push_back(meilleureBalle);
-		//ON MUTE CHAQUE BALLE
+		//ON MUTE CHAQUE BALLE RESTANTE
 		for(int k=0; k< population.size()-1; k++){
 			vieille_balle = population[k];
 			depl_mute = vieille_balle.getListeDirections();
