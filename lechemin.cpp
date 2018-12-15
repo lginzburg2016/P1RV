@@ -3,8 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <chrono>
-#include <thread>
+//#include <chrono>
+//#include <thread>
 
 
 using namespace std;
@@ -80,7 +80,7 @@ int main(){
 				case 'X':
 					courante.setX(x_old);
 					courante.setY(y_old);
-					cout << "Déplacement impossible car obstacle." << endl;
+					cout << "Deplacement impossible car obstacle." << endl;
 					break;
 				case 'O':
 					tab[x][y] = 'L';
@@ -99,13 +99,19 @@ int main(){
 					if ( ((int)value - 48) > (courante.getPassage() + 1) || touche == 1 || touche == 4 || touche == 7){ //attention, en code ASCII, nombres commencent à 48 !
 						courante.setX(x_old);
 						courante.setY(y_old);
-						cout << "Ce n'est pas la bonne porte, il faut passer par la porte n° : " << courante.getPassage() + 1 << " d'abord" << endl;
+						cout << "Ce n est pas la bonne porte, il faut d abord passer par la porte : " << courante.getPassage() + 1 << endl;
 						incrementation = false;
 					}else{
-						//Si on ressort de la porte vers la gauche, on n'incrémente pas et on laisse la case sur le chiffre
 						tab[x][y] = 'L';
+                        /*si le prochain deplacement est un mauvais deplacement, on passe directement au tour suivant
+                        car sinon la valeur dans la porte passera à O au lieu de garder sa valeur !
+                        */
+
+
+						//Si on ressort de la porte vers la gauche, on n incrémente pas et on laisse la case sur le chiffre
 						if (touche == 1 || touche == 4 || touche == 7){
 							tab[x_old][y_old] = value;
+                            cout << "valeur de la porte : " << (int)value - 48 << endl;
 							incrementation = false;
 						}
 						//Si on traverse, on passe la porte à O, et on incrémente le score + l'ordre de passage
@@ -113,6 +119,7 @@ int main(){
 							tab[x_old][y_old] = 'O';
 							courante.setPassage(courante.getPassage() + 1);
 							incrementation = true;
+                            cout << "incrementation : " << incrementation << endl;
 						}
 						//Apres un passage, il n y aura plus de numero au centre de la porte
 					}
@@ -121,7 +128,7 @@ int main(){
 				affichage(tab);
 				break;
 			default:
-				cout << "Mauvais déplacement" << endl;
+				cout << "Mauvais deplacement" << endl;
 				break;
 			}
 
@@ -130,7 +137,7 @@ int main(){
 				//Si on effectue deux deplacements a droite consecutifs et qu avant le deplacement la balle est entre deux montants de porte, on incremente positivement le score.
 				if((depl[tour] == 3 || depl[tour] == 6 || depl[tour] == 9) && (depl[tour-1] == 3 || depl[tour-1] == 6 || depl[tour-1] == 9) && (tab[x_old-1][y_old] == 'X') && (tab[x_old+1][y_old] == 'X')){
 					//remarque : s il n y a plus de numero au centre de la porte, c est qu elle aura deja ete franchie et on ne compte pas de points a nouveau !
-					cout << "On a passé une porte, incrementation vaut " << incrementation << endl;
+					cout << "On a passe une porte, incrementation vaut " << incrementation << endl;
 					if (incrementation){ //si ce n etait pas 'O' au centre de la porte, c etait un numero et donc on incremente le score
 						cout << "Porte franchie !!!!!!!!!!" << endl;
 						courante.updateScore(10);
@@ -146,7 +153,7 @@ int main(){
 			}
 			cout << "Score : " << courante.getScore() << endl;
 			tour += 1 ;
-			std::this_thread::sleep_for(std::chrono::milliseconds(100));
+			//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 		}
 
 
@@ -156,10 +163,14 @@ int main(){
 			maxEval = tour;
 		}
 
+		cout << "individu : " << i << endl; //pour relever le n° de l individu en cours 
 	}
 
 
 	affichage(tab);
+    cout << "taille de la population : " << population.size() << endl;
+    cout << "la meilleure balle a passe : " << meilleureBalle.getPassage() << " portes" << endl;
+    cout << "elle a survecu pendant : " << tour << " tours" << endl;
 
 	return 0;
 
