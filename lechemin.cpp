@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <xtgmath.h>
+#include <tgmath.h>
 //#include <chrono>
 //#include <thread>
 
@@ -31,7 +31,7 @@ int main(){
 	vector<int> depl, depl_mute;
 	int num_depl;
 	int degre_mutation, num_balle;
-	balle balle_mutee, vieille_balle;
+	balle balle_mutee, vieille_balle, courante;
 
 	cout << "Quel pourcentage de mutation souhaitez-vous appliquer aux populations ? Entre 0 et 100" << endl;
 	cin >> degre_mutation;
@@ -48,15 +48,17 @@ int main(){
 	affichage(tab);
 
 	//INITIALISATION DE LA POPULATION
-
-	balle courante = crea_balle(tab);
-	//on stocke les balles pour ensuite recuperer la meilleure de la population : selection par elitisme
-	population.push_back(courante);
-	courante.setScore(100);
-	depl = courante.getListeDirections();
-
-	for(int i = 0; i < N_POPULATION; i++){
-		//ON TRAITE LA POPULATION COURANTE
+  for(int i = 0; i<N_INDIVIDUS; i++){
+    //on stocke les balles pour ensuite recuperer la meilleure de
+    //la population : selection par elitisme
+    courante = crea_balle(tab);
+  	population.push_back(courante);
+  	courante.setScore(100);
+  	depl = courante.getListeDirections();
+  }
+  //POUR CHAQUE GENERATION...
+	for(int i = 0; i < N_GENERATIONS; i++){
+		//...ON TRAITE LA POPULATION COURANTE, (CHAQUE INDIVIDU)
 		for(int j = 0; j < N_INDIVIDUS; j++){
 
 			tour = 0;
@@ -191,7 +193,15 @@ int main(){
 			}
 
 			cout << "individu : " << i << endl; //pour relever le n° de l individu en cours
-		}
+
+      //ON REINITIALISE LE BOARD
+      for(int m=0; m<MSIZE; m++){
+        for(int n=0; n<MSIZE; n++){
+          tab[m][n] = tab_ini[m][n];
+        }
+      }
+
+    }
 
 		//ON GARDE LA MEILLEURE BALLE DE LA POPULATION, ET ON FAIT MUTER LES AUTRES
 
@@ -208,22 +218,15 @@ int main(){
 			balle_mutee.setListeDirections(depl_mute);
 			new_population.push_back(balle_mutee);
 		}
+    //ON MET A JOUR LA POPULATION ETUDIEE
 		population = new_population;
 
-		//ON REINITIALISE LE BOARD COMME AU DEBUT
 
-		for(int m=0; m<MSIZE; m++){
-			for(int n=0; n<MSIZE; n++){
-				tab[m][n] = tab_ini[m][n];
-			}
-		}
-
-	}
-
-	affichage(tab);
-	cout << "taille de la population : " << population.size() << endl;
-	cout << "la meilleure balle a passe : " << meilleureBalle.getPassage() << " portes" << endl;
-	cout << "elle a survecu pendant : " << tour << " tours" << endl;
+	  affichage(tab);
+	  cout << "taille de la population : " << population.size() << endl;
+	  cout << "la meilleure balle a passe : " << meilleureBalle.getPassage() << " portes" << endl;
+	  cout << "elle a survecu pendant : " << tour << " tours" << endl;
+  }
 
 	return 0;
 

@@ -4,7 +4,7 @@
 
 #define MSIZE 10
 #define N_MOVES 1000
-#define N_POPULATION 5
+#define N_GENERATIONS 5 //Nombre de population que l'on teste (nombre de générations)
 #define N_INDIVIDUS 5
 #define N_PORTES 3
 #include "balle.h"
