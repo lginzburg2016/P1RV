@@ -203,6 +203,13 @@ int main(){
     }
     population = new_population;
 
+    //ON REINITIALISE LE BOARD COMME AU DEBUT
+
+    for(int m=0; m<MSIZE; m++){
+      for(int n=0; n<MSIZE; n++){
+        tab[m][n] = tab_ini[m][n];
+      }
+    }
 
   }
 
