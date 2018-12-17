@@ -11,7 +11,7 @@ void generer_board(char tab[MSIZE][MSIZE]){
   //on remplit le tableau de 0;
   for (int i=0; i<MSIZE; i++){
     for(int j=0; j<MSIZE; j++){
-      tab[i][j] = 'O';
+      tab[i][j] = ' ';
     }
   }
 

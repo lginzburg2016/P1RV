@@ -7,6 +7,7 @@
 #define N_GENERATIONS 5 //Nombre de population que l'on teste (nombre de générations)
 #define N_INDIVIDUS 5
 #define N_PORTES 3
+#define VAL_SCORE 100
 #include "balle.h"
 
 void generer_board(char tab[MSIZE][MSIZE]);

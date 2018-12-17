@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <tgmath.h>
-//#include <chrono>
-//#include <thread>
+#include <chrono>
+#include <thread>
 
 
 using namespace std;
@@ -49,16 +49,20 @@ int main(){
 	affichage(tab);
 
 	//INITIALISATION DE LA POPULATION
-  for(int i = 0; i<N_INDIVIDUS; i++){
-    //on stocke les balles pour ensuite recuperer la meilleure de
-    //la population : selection par elitisme
-    courante = crea_balle(tab);
-  	population.push_back(courante);
-  	courante.setScore(100);
-  	depl = courante.getListeDirections();
-  }
+	//INITIALISATION DE LA POPULATION
+	for(int i = 0; i<N_INDIVIDUS; i++){
+		//on stocke les balles pour ensuite recuperer la meilleure de
+		//la population : selection par elitisme
+		courante = crea_balle(tab);
+		courante.setScore(VAL_SCORE);
+		population.push_back(courante);
+	}
+
   //POUR CHAQUE GENERATION...
 	for(int i = 0; i < N_GENERATIONS; i++){
+
+
+
 		//...ON TRAITE LA POPULATION COURANTE, (CHAQUE INDIVIDU)
 		for(int j = 0; j < N_INDIVIDUS; j++){
 
@@ -66,6 +70,7 @@ int main(){
 
 			fin_jeu = false;
 			courante = population[j];
+			depl = courante.getListeDirections();
       //PARCOURS D'UNE BALLE
 			while(!fin_jeu){
 				if (tour == N_MOVES){
@@ -106,9 +111,9 @@ int main(){
 						courante.setY(y_old);
 						cout << "Deplacement impossible car obstacle." << endl;
 						break;
-					case 'O':
+					case ' ':
 						tab[x][y] = 'L';
-						tab[x_old][y_old] = 'O';
+						tab[x_old][y_old] = ' ';
 						break;
 					case '1':
 					case '2':
@@ -147,7 +152,7 @@ int main(){
 							}
 							//Si on traverse, on passe la porte à O, et on incrémente le score + l'ordre de passage
 							else{
-								tab[x_old][y_old] = 'O';
+								tab[x_old][y_old] = ' ';
 								courante.setPassage(courante.getPassage() + 1);
 								incrementation = true;
 								cout << "incrementation : " << incrementation << endl;
@@ -168,7 +173,7 @@ int main(){
 					//Si on effectue deux deplacements a droite consecutifs et qu avant le deplacement la balle est entre deux montants de porte, on incremente positivement le score.
 					if((depl[tour] == 3 || depl[tour] == 6 || depl[tour] == 9) && (depl[tour-1] == 3 || depl[tour-1] == 6 || depl[tour-1] == 9) && (tab[x_old-1][y_old] == 'X') && (tab[x_old+1][y_old] == 'X')){
 						//remarque : s il n y a plus de numero au centre de la porte, c est qu elle aura deja ete franchie et on ne compte pas de points a nouveau !
-						if (incrementation){ //si ce n etait pas 'O' au centre de la porte, c etait un numero et donc on incremente le score
+						if (incrementation){ //si ce n etait pas ' ' au centre de la porte, c etait un numero et donc on incremente le score
 							cout << "Porte franchie !!!!!!!!!!" << endl;
 							courante.updateScore(10);
 							incrementation = false;
@@ -184,7 +189,7 @@ int main(){
 				cout << "Score : " << courante.getScore() << endl;
 				tour += 1 ;
         //ON CREE UN DELAI DE 100 MILLISECONDES ENTRE CHAQUE PAS DE TEMPS
-				//std::this_thread::sleep_for(std::chrono::milliseconds(100));
+				std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			}
 
 
@@ -194,7 +199,7 @@ int main(){
 				maxEval = tour;
 			}
 
-			cout << "individu : " << i << endl; //pour relever le n° de l individu en cours
+			cout << "individu : " << j << endl; //pour relever le n° de l individu en cours
 
       //ON REINITIALISE LE BOARD
       for(int m=0; m<MSIZE; m++){
@@ -202,22 +207,31 @@ int main(){
           tab[m][n] = tab_ini[m][n];
         }
       }
-
     }
 
-		//ON GARDE LA MEILLEURE BALLE DE LA POPULATION, ET ON FAIT MUTER LES AUTRES
+		cout << "taille de la population : " << population.size() << endl;
+	  cout << "la meilleure balle a passe : " << meilleureBalle.getPassage() << " portes" << endl;
+	  cout << "elle a survecu pendant : " << maxEval << " tours" << endl;
 
+		//ON VIDE LA VIEILLE POPULATION
+		new_population.clear();
+
+		//ON GARDE LA MEILLEURE BALLE DE LA POPULATION, ET ON FAIT MUTER LES AUTRES
 		new_population.push_back(meilleureBalle);
+		cout << "Selection et mutation en cours" << endl;
+
+
 		//ON MUTE CHAQUE BALLE RESTANTE
-		for(int k=0; k< population.size()-1; k++){
+		for(int k=0; k < N_INDIVIDUS-1; k++){
 			vieille_balle = population[k];
 			depl_mute = vieille_balle.getListeDirections();
 			//ON PREND EN COMPTE LE DEGRE DE MUTATION (un certain pourcentage du nb total de déplacements)
-			for(int l=0; l< floor(depl_mute.size()*(degre_mutation/100)) ; l++){
+			for(int l = 0; l < ceil(depl_mute.size()*(degre_mutation/100)) ; l++){
 				num_depl = rand()%depl_mute.size();
 				depl_mute[num_depl] = rand()%9+1;
 			}
 			balle_mutee.setListeDirections(depl_mute);
+			balle_mutee.setScore(100);
 			new_population.push_back(balle_mutee);
 		}
     //ON MET A JOUR LA POPULATION ETUDIEE
@@ -225,9 +239,6 @@ int main(){
 
 
 	  affichage(tab);
-	  cout << "taille de la population : " << population.size() << endl;
-	  cout << "la meilleure balle a passe : " << meilleureBalle.getPassage() << " portes" << endl;
-	  cout << "elle a survecu pendant : " << tour << " tours" << endl;
   }
 
 	return 0;

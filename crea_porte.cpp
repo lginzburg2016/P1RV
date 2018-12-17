@@ -14,7 +14,7 @@ void crea_porte(char tab[MSIZE][MSIZE], int numero){
   cout << "Valeur de M : " << m << endl;
   int n = rand()%(MSIZE -2);
   cout << "Valeur de N : " << n << endl;
-  while(tab[m][n] != 'O'){
+  while(tab[m][n] != ' '){
     m = rand()%(MSIZE -2) + 1;
     cout << "Valeur de M : " << m << endl;
     n = rand()%(MSIZE -2);
@@ -40,7 +40,7 @@ void crea_porte(char tab[MSIZE][MSIZE], int numero){
     cout << "Valeur de M1 : " << m1 << endl;
     cout << "Valeur de N1 : " << n1 << endl;
 
-    if ((m1 > 0) && (m1 < MSIZE) && (n1 > 0) && (n1 < MSIZE) && ( (tab[min(m-1,m1-1)][n] == 'O') && (tab[max(m+1,m1+1)][n] == 'O') ) && ( (tab[m][n-1] == 'O') && (tab[m][n+1] == 'O') ) && ( (tab[m1][n-1] == 'O') && (tab[m1][n+1] == 'O') ) ){ //on ne veut pas des portes collees ou imbriquees !
+    if ((m1 > 0) && (m1 < MSIZE) && (n1 > 0) && (n1 < MSIZE) && ( (tab[min(m-1,m1-1)][n] == ' ') && (tab[max(m+1,m1+1)][n] == ' ') ) && ( (tab[m][n-1] == ' ') && (tab[m][n+1] == ' ') ) && ( (tab[m1][n-1] == ' ') && (tab[m1][n+1] == ' ') ) ){ //on ne veut pas des portes collees ou imbriquees !
       //SI LES MONTANTS DE LA PORTE SONT DANS LA MATRICE     ET S'IL N'Y A PAS DE MONTANT EN HAUT/BAS DE CELLE QUE L'ON VEUT PLACER ET S'IL N'Y A PAS DE MONTANT A GAUCHE ET A DROITE DE LA PORTE.
       //Si on peut placer la porte, c'est bon.
       tab[m][n] = 'X';
@@ -59,7 +59,7 @@ void crea_porte(char tab[MSIZE][MSIZE], int numero){
       cout << "Valeur de M : " << m << endl;
       n = rand()%10;
       cout << "Valeur de N : " << n << endl;
-      while(tab[m][n] != 'O'){
+      while(tab[m][n] != ' '){
         m = rand()%8 + 1;
         cout << "Valeur de M : " << m << endl;
         n = rand()%10;
