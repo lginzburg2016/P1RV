@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
 using namespace std;
 
@@ -35,7 +36,7 @@ balle crea_balle(char tab[MSIZE][MSIZE]){
   //creation de balle sur la 1ere colonne, au milieu 
   int m = (int) MSIZE/2; //conversion forcee en entier !
   int n = 0;
-  tab[m][n] = 'L';
+  tab[m][n] = 'O';
 
   //construction du vecteur de deplacements
   int new_dep;

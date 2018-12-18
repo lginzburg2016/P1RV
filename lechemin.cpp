@@ -79,15 +79,6 @@ int main(){
 				x_old = courante.getX();
 				y_old = courante.getY();
 
-				/*cout << "Continuer ? (y/n)" << endl;
-				cin >> cont;
-				switch(cont){
-				case 'n':
-				fin_jeu = true;
-				break;
-				case 'y':
-				break;
-				}*/
 
 				//A chaque tour de boucle, on lit la valeur de deplacement suivante.
 				touche = depl[tour];
@@ -112,7 +103,7 @@ int main(){
 						cout << "Deplacement impossible car obstacle." << endl;
 						break;
 					case ' ':
-						tab[x][y] = 'L';
+						tab[x][y] = 'O'; 
 						tab[x_old][y_old] = ' ';
 						break;
 					case '1':
@@ -141,7 +132,7 @@ int main(){
 								courante.updateScore(-1);
 							}
 
-							tab[x][y] = 'L';
+							tab[x][y] = 'O';
 
 
 							//Si on ressort de la porte vers la gauche, on n incrémente pas et on laisse la case sur le chiffre
