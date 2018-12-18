@@ -6,17 +6,18 @@
 using namespace std;
 
 void generer_board(char tab[MSIZE][MSIZE]){
-  // on crée notre tableau
+	// on cree notre tableau
 
-  //on remplit le tableau de 0;
-  for (int i=0; i<MSIZE; i++){
-    for(int j=0; j<MSIZE; j++){
-      tab[i][j] = ' ';
-    }
-  }
+	//on remplit le tableau de ' ' pour que les portes et les deplacements de la balle soient bien visibles
+	for (int i=0; i<MSIZE; i++){
+		for(int j=0; j<MSIZE; j++){
+			tab[i][j] = ' ';
+		}
+	}
 
-  for (int i = 1; i <= N_PORTES; i++){
-	  crea_porte(tab,i);
-  }
+	//creation du nombre de portes voulu et fixe par N_PORTES
+	for (int i = 1; i <= N_PORTES; i++){
+		crea_porte(tab,i);
+	}
 
 }

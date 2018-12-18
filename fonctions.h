@@ -2,12 +2,13 @@
 
 #pragma once
 
-#define MSIZE 10
-#define N_MOVES 1000
-#define N_GENERATIONS 5 //Nombre de population que l'on teste (nombre de générations)
-#define N_INDIVIDUS 5
-#define N_PORTES 3
-#define VAL_SCORE 100
+#define MSIZE 10 //taille du tableau
+#define N_MOVES 1000 //nombre de mouvements permis pour une balle
+#define N_GENERATIONS 5 //nombre de population que l'on teste (nombre de générations)
+#define N_INDIVIDUS 5 //nombre d individus d une population
+#define N_PORTES 3 //nombre de portes creees sur le tableau
+#define VAL_SCORE 100 //score initial des balles
+
 #include "balle.h"
 
 void generer_board(char tab[MSIZE][MSIZE]);
