@@ -4,8 +4,8 @@
 
 #define MSIZE 10 //taille du tableau
 #define N_MOVES 1000 //nombre de mouvements permis pour une balle
-#define N_GENERATIONS 5 //nombre de population que l'on teste (nombre de générations)
-#define N_INDIVIDUS 5 //nombre d individus d une population
+#define N_GENERATIONS 10 //nombre de population que l'on teste (nombre de générations)
+#define N_INDIVIDUS 10 //nombre d individus d une population
 #define N_PORTES 3 //nombre de portes creees sur le tableau
 #define VAL_SCORE 100 //score initial des balles
 

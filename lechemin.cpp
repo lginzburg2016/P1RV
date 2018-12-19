@@ -52,7 +52,7 @@ int main(){
 
 	//INITIALISATION DE LA POPULATION
 	for(int i = 0; i<N_INDIVIDUS; i++){
-		//on stocke les balles pour ensuite recuperer la meilleure de la population : 
+		//on stocke les balles pour ensuite recuperer la meilleure de la population :
 		//selection par elitisme
 		courante = crea_balle(tab);
 		//on fixe le score initial de la balle a VAL_SCORE
@@ -102,7 +102,7 @@ int main(){
 					//recuperation des nouvelles coordonnees de la balle
 					x = courante.getX();
 					y = courante.getY();
-					//on va regarder ce qu il y a dans la case du tableau avant de la modifier si possible 
+					//on va regarder ce qu il y a dans la case du tableau avant de la modifier si possible
 					value = tab[x][y];
 					switch (value){
 					//s il y a un montant de porte, on ne deplace pas la balle
@@ -114,7 +114,7 @@ int main(){
 						break;
 					//si la case est vide, on peut y mettre la balle
 					case ' ':
-						tab[x][y] = 'O'; 
+						tab[x][y] = 'O';
 						tab[x_old][y_old] = ' ';
 						break;
 					//s il y a un numero, il s agit du centre d une porte !
@@ -187,8 +187,8 @@ int main(){
 					}
 					else{
 						//quand on passe un pas de temps on diminue le score
-						courante.updateScore(-1); 
-						//lorsque le score arrive a 0, le jeu est termine 
+						courante.updateScore(-1);
+						//lorsque le score arrive a 0, le jeu est termine
 						if (courante.getScore() <= 0){
 							fin_jeu = true;
 						}
@@ -199,7 +199,7 @@ int main(){
 				tour += 1 ;
 				//ON CREE UN DELAI DE 100 MILLISECONDES ENTRE CHAQUE PAS DE TEMPS
 				//permet un affichage plus lent des tableaux successifs
-				std::this_thread::sleep_for(std::chrono::milliseconds(100));
+				//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 			}
 
 
